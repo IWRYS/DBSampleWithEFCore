@@ -28,10 +28,16 @@
 
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)=>
-        
-            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Practice;Integrated Security=True");
-        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=Practice;Integrated Security=True");
+            }
+
+        }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) =>
         
